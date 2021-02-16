@@ -14,4 +14,4 @@ https://gitlab.gnome.org/GNOME/adwaita-icon-theme/-/issues/108
 
 For WinURL to work correctly, you need to install the package-patch from the "adwaita-mime-patch" folder.
 
-Made and tested in Mageia Linux-6/7/8.
+Made and tested in Mageia Linux-7/8.
