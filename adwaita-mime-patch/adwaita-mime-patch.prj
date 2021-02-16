@@ -1,0 +1,64 @@
+[NAME]
+name=adwaita-mime-patch
+
+[VERSION]
+version=1
+
+[RELEASE]
+release=0.mrx8
+
+[GROUP]
+group=Applications/File
+
+[DESCRIPTION]
+0=Patch for Adwaita mime-type icons theme
+
+[MAINTAINER]
+maintainer=Alex Kotov
+
+[VENDOR]
+vendor=MgaRemix
+
+[SUMMARY]
+summary=Patch for Adwaita mime-type icons theme
+
+[URLCOPY]
+urlcopy=https://cloud.mail.ru/public/4XHM/3AeR7XSSp
+
+[LICENSE]
+license=GPLv2
+
+[DEPS]
+deps=
+
+[META]
+meta=1
+
+[NOARCH]
+noarch=1
+
+[SIGN]
+sign=0
+
+[AFTERINSTALL]
+0=rename -v \.png \.bak $(find /usr/share/icons/Adwaita/*/mimetypes/ -name 'application-x-generic.*')
+1=gtk-update-icon-cache -f /usr/share/icons/Adwaita/
+
+[AFTERREMOVE]
+0=rename -v \.bak \.png $(find /usr/share/icons/Adwaita/*/mimetypes/ -name 'application-x-generic.*')
+1=gtk-update-icon-cache -f /usr/share/icons/Adwaita/
+
+[URL32]
+url32=
+
+[URL64]
+url64=
+
+[PROGRAMNAME]
+programname=
+
+[DEVTOOL]
+devtool=
+
+[TOOLVERSION]
+toolversion=
