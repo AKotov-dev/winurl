@@ -1,0 +1,78 @@
+msgid ""
+msgstr ""
+"Content-Type: text/plain; charset=UTF-8\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<12 || n%100>14) ? 1 : 2);\n"
+"Project-Id-Version: WinURL\n"
+"POT-Creation-Date: \n"
+"PO-Revision-Date: \n"
+"Last-Translator: \n"
+"Language-Team: alex_q_2000\n"
+"MIME-Version: 1.0\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: ru\n"
+"X-Generator: Poedit 2.2.3\n"
+
+#: tmainform.caption
+msgid "MainForm"
+msgstr ""
+
+#: tmainform.createbtn.caption
+msgid "Create ShortCut"
+msgstr "Создать ярлык"
+
+#: tmainform.label1.caption
+msgid ""
+"License: GPLv3\n"
+"Author: alex_q_2000 (C) 2020\n"
+msgstr ""
+"Лицензия: GPLv3\n"
+"Автор: alex_q_2000 (C) 2020\n"
+
+#: tmainform.label2.caption
+msgid "URL:"
+msgstr ""
+
+#: tmainform.label3.caption
+msgid "Name:"
+msgstr "Имя:"
+
+#: tmainform.label4.caption
+msgid "Directory:"
+msgstr "Директория:"
+
+#: tmainform.pathedit.hint
+msgid "Path to save *.url files"
+msgstr "Путь сохранения файлов *.url"
+
+#: tmainform.selpathbtn.caption
+msgid "..."
+msgstr ""
+
+#: tmainform.urledit.hint
+msgctxt "tmainform.urledit.hint"
+msgid "http://.., https://.., ftp://..."
+msgstr ""
+
+#: tselecticonsform.caption
+msgid "Select Icon"
+msgstr "Выбор иконки"
+
+#: unit1.sfileexists
+msgid "The file already exists! Overwrite it?"
+msgstr "Файл уже существует! Перезаписать?"
+
+#: unit1.smate_cmenu
+msgid "Create Internet ShortCut"
+msgstr "Создать интернет-ярлык"
+
+#: unit1.snameinput
+msgid "Name: Yandex search engine"
+msgstr "Имя: Поисковая система Яндекс"
+
+#: unit1.spermissiondenied
+msgid "Access error! Change the target directory!"
+msgstr "Ошибка доступа! Измените директорию цели!"
+
+#: unit1.stitle
+msgid "Design example..."
+msgstr "Пример оформления..."

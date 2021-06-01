@@ -1,0 +1,18 @@
+[Nemo Action]
+
+Active=true
+
+Name=Create Internet ShortCut
+Name[ru]=Создать интернет-ярлык
+
+#Comment=Create Internet ShortCut
+#Comment[ru]=Создать интернет-ярлык
+
+Exec=/usr/share/WinURL/WinURL
+
+Icon-Name=WinURL
+
+Selection=none
+Extensions=any;
+
+Quote=double

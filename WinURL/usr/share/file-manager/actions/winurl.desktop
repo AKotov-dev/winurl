@@ -1,0 +1,10 @@
+[Desktop Entry]
+Type=Action
+Name=Create Internet ShortCut
+Name[ru]=Создать интернет-ярлык
+Profiles=profile-zero;
+Icon=WinURL
+
+[X-Action-Profile profile-zero]
+Exec=/usr/share/WinURL/WinURL
+Name=Default profile

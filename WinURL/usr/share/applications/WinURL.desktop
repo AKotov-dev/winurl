@@ -1,0 +1,11 @@
+[Desktop Entry]
+Name=WinURL
+Name[ru]=WinURL
+Comment=Opens and creates Internet shortcuts (*.url)
+Comment[ru]=Открывает и создаёт интернет-ярлыки (*.url)
+Icon=WinURL
+Exec=/usr/share/WinURL/WinURL
+Type=Application
+Categories=Network;
+Terminal=false
+MimeType=application/x-mswinurl
