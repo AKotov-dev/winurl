@@ -5,8 +5,10 @@ program WinURL;
 uses {$IFDEF UNIX} {$IFDEF UseCThreads}
   cthreads, {$ENDIF} {$ENDIF}
   Interfaces, // this includes the LCL widgetset
-  Forms, Process,
-  Unit1, select_icons_unit { you can add units after this };
+  Forms,
+  Process,
+  Unit1,
+  select_icons_unit { you can add units after this };
 
 {$R *.res}
 
@@ -17,11 +19,11 @@ uses {$IFDEF UNIX} {$IFDEF UseCThreads}
   begin
     ExProcess := TProcess.Create(nil);
     try
-      ExProcess.Executable := 'bash';  //sh или xterm
+      ExProcess.Executable := 'bash';
       ExProcess.Parameters.Add('-c');
 
-      ExProcess.Parameters.Add('xdg-open $(grep "URL=" "' +
-        ParamStr(1) + '" | cut -c 5- | col -b) || zenity --error --text="' + SDefaultBrowser + '"; exit 0');
+      ExProcess.Parameters.Add('xdg-open $(grep "URL=" "' + ParamStr(1) +
+        '" | cut -c 5- | col -b); exit 0');
 
       ExProcess.Execute;
     finally
@@ -36,12 +38,11 @@ begin
   if ParamCount <> 0 then
     OpenURLFromFile;
 
-  Application.Title:='WinURL v1.3';
+  Application.Scaled:=True;
+  Application.Title:='WinURL v1.4';
   RequireDerivedFormResource := True;
   Application.Initialize;
   Application.CreateForm(TMainForm, MainForm);
   Application.Run;
 end.
-
-
 

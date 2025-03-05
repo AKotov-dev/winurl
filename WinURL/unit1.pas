@@ -8,22 +8,22 @@ uses
   Classes, SysUtils, FileUtil, Forms, Controls, Graphics, Dialogs, ExtCtrls,
   Buttons, XMLPropStorage, StdCtrls, LCLTranslator, DefaultTranslator,
   LCLType, PopupNotifier, Process;
-//Types
+  //Types
 
 type
 
   { TMainForm }
 
   TMainForm = class(TForm)
+    URLEdit: TEdit;
+    PathEdit: TEdit;
     PopupNotifier1: TPopupNotifier;
     SelectBtn: TBitBtn;
     CreateBtn: TBitBtn;
-    PathEdit: TEdit;
     Label4: TLabel;
     NameEdit: TEdit;
     SelectDirectoryDialog1: TSelectDirectoryDialog;
     SelPathBtn: TSpeedButton;
-    URLEdit: TEdit;
     Label1: TLabel;
     Label2: TLabel;
     Label3: TLabel;
@@ -32,7 +32,6 @@ type
     procedure PopupNotifier1Close(Sender: TObject; var CloseAction: TCloseAction);
     procedure SelectBtnClick(Sender: TObject);
     procedure CreateBtnClick(Sender: TObject);
-    procedure NameEditClick(Sender: TObject);
     procedure SelPathBtnClick(Sender: TObject);
     procedure URLEditClick(Sender: TObject);
     procedure FormCreate(Sender: TObject);
@@ -63,9 +62,9 @@ implementation
 
 uses select_icons_unit;
 
-{$R *.lfm}
+  {$R *.lfm}
 
-{ TMainForm }
+  { TMainForm }
 
 
 //Создаём опцию "Создать интернет-ярлык" в контекстном меню MATE (ПКМ)
@@ -81,7 +80,8 @@ begin
     ExProcess.Parameters.Add('mkdir -p ~/.config/caja/scripts; echo -e ' +
       '''' + '#!/bin/bash\n\n/usr/share/WinURL/WinURL || rm "$0"' +
       '''' + ' > ~/.config/caja/scripts/"' + SMATE_CMenu + '"; chmod +x ' +
-      GetEnvironmentVariable('HOME') + '/.config/caja/scripts/"' + SMATE_CMenu + '"; caja -q');
+      GetEnvironmentVariable('HOME') + '/.config/caja/scripts/"' +
+      SMATE_CMenu + '"; caja -q');
 
     ExProcess.Execute;
   finally
@@ -109,6 +109,10 @@ begin
   //Заменяем неразрешенные фразы
   for i := 0 to 5 do
     S := StringReplace(S, BadWord[i], '---', [rfReplaceAll]);
+
+  //Удвляем переводы строк
+  S := StringReplace(S, #13, '_', [rfReplaceAll]);
+  S := StringReplace(S, #10, '_', [rfReplaceAll]);
 
   //Урезаем длину имени до 200 символов
   if Length(S) > 255 then
@@ -152,7 +156,13 @@ end;
 
 procedure TMainForm.FormShow(Sender: TObject);
 begin
+  //Plasma HiDPI
+  XMLPropStorage1.Restore;
+
   MainForm.Caption := Application.Title;
+
+  SelPathBtn.Width := PathEdit.Height;
+  SelectBtn.Width := CreateBtn.Height;
 
   //Первый запуск... Ищем Рабочий стол...
   if Trim(PathEdit.Text) = '' then
@@ -225,11 +235,6 @@ end;
 procedure TMainForm.PopupNotifier1Close(Sender: TObject; var CloseAction: TCloseAction);
 begin
   Timer1.Enabled := False;
-end;
-
-procedure TMainForm.NameEditClick(Sender: TObject);
-begin
-  NameEdit.SelectAll;
 end;
 
 procedure TMainForm.SelPathBtnClick(Sender: TObject);

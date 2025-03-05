@@ -2,7 +2,8 @@ program WinURL;
 
 {$mode objfpc}{$H+}
 
-uses {$IFDEF UNIX} {$IFDEF UseCThreads}
+uses
+  {$IFDEF UNIX} {$IFDEF UseCThreads}
   cthreads, {$ENDIF} {$ENDIF}
   Interfaces, // this includes the LCL widgetset
   Forms,
@@ -10,9 +11,9 @@ uses {$IFDEF UNIX} {$IFDEF UseCThreads}
   Unit1,
   select_icons_unit { you can add units after this };
 
-{$R *.res}
+  {$R *.res}
 
-//Открываем адрес из файла.url
+  //Открываем адрес из файла.url
   procedure OpenURLFromFile;
   var
     ExProcess: TProcess;
@@ -38,10 +39,10 @@ begin
   if ParamCount <> 0 then
     OpenURLFromFile;
 
-  Application.Title := 'WinURL v1.3';
+  Application.Scaled := True;
+  Application.Title := 'WinURL v1.4';
   RequireDerivedFormResource := True;
   Application.Initialize;
   Application.CreateForm(TMainForm, MainForm);
   Application.Run;
 end.
-

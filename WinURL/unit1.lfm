@@ -1,12 +1,12 @@
 object MainForm: TMainForm
-  Left = 300
-  Height = 173
-  Top = 116
-  Width = 485
+  Left = 303
+  Height = 177
+  Top = 129
+  Width = 509
   ActiveControl = URLEdit
   Caption = 'MainForm'
-  ClientHeight = 173
-  ClientWidth = 485
+  ClientHeight = 177
+  ClientWidth = 509
   FormStyle = fsSystemStayOnTop
   KeyPreview = True
   OnCreate = FormCreate
@@ -14,13 +14,13 @@ object MainForm: TMainForm
   OnShow = FormShow
   Position = poDefault
   SessionProperties = 'Height;Left;PathEdit.Text;SelectDirectoryDialog1.FileName;Top;Width'
-  LCLVersion = '2.0.8.0'
+  LCLVersion = '3.8.0.0'
   object CreateBtn: TBitBtn
     AnchorSideRight.Control = Owner
     AnchorSideRight.Side = asrBottom
-    Left = 348
-    Height = 32
-    Top = 134
+    Left = 372
+    Height = 40
+    Top = 130
     Width = 132
     Anchors = [akRight, akBottom]
     BorderSpacing.Right = 5
@@ -30,33 +30,17 @@ object MainForm: TMainForm
     ShowHint = True
     TabOrder = 4
   end
-  object URLEdit: TEdit
-    AnchorSideLeft.Control = NameEdit
-    AnchorSideRight.Control = Owner
-    AnchorSideRight.Side = asrBottom
-    Left = 50
-    Height = 29
-    Hint = 'http://.., https://.., ftp://...'
-    Top = 52
-    Width = 430
-    Anchors = [akLeft, akRight]
-    BorderSpacing.Right = 5
-    OnClick = URLEditClick
-    ParentShowHint = False
-    ShowHint = True
-    TabOrder = 1
-  end
   object Label2: TLabel
     AnchorSideLeft.Control = Owner
-    AnchorSideBottom.Control = URLEdit
+    AnchorSideTop.Control = URLEdit
+    AnchorSideTop.Side = asrCenter
     AnchorSideBottom.Side = asrBottom
-    Left = 5
+    Left = 4
     Height = 17
-    Top = 64
-    Width = 29
-    Anchors = [akLeft, akBottom]
-    BorderSpacing.Left = 5
-    Caption = 'URL:'
+    Top = 57
+    Width = 24
+    BorderSpacing.Left = 4
+    Caption = 'URL'
     Font.Style = [fsUnderline]
     ParentColor = False
     ParentFont = False
@@ -64,12 +48,12 @@ object MainForm: TMainForm
   object Label1: TLabel
     AnchorSideLeft.Control = Owner
     AnchorSideBottom.Side = asrBottom
-    Left = 5
+    Left = 4
     Height = 28
-    Top = 138
-    Width = 169
+    Top = 142
+    Width = 165
     Anchors = [akLeft, akBottom]
-    BorderSpacing.Left = 5
+    BorderSpacing.Left = 4
     Caption = 'License: GPLv3'#10'Author: alex_q_2000 (C) 2020'
     Font.Color = clGray
     Font.Height = -11
@@ -78,61 +62,47 @@ object MainForm: TMainForm
     ParentFont = False
   end
   object Label3: TLabel
-    AnchorSideBottom.Control = NameEdit
+    AnchorSideLeft.Control = Owner
+    AnchorSideTop.Control = NameEdit
+    AnchorSideTop.Side = asrCenter
     AnchorSideBottom.Side = asrBottom
-    Left = 5
+    Left = 4
     Height = 17
-    Top = 102
-    Width = 40
-    Anchors = [akLeft, akBottom]
-    Caption = 'Name:'
+    Top = 96
+    Width = 36
+    BorderSpacing.Left = 4
+    Caption = 'Name'
     Font.Style = [fsUnderline]
     ParentColor = False
     ParentFont = False
   end
   object NameEdit: TEdit
-    AnchorSideLeft.Control = Label3
-    AnchorSideLeft.Side = asrBottom
-    Left = 50
-    Height = 29
-    Top = 90
-    Width = 429
+    AnchorSideLeft.Control = PathEdit
+    AnchorSideRight.Control = Owner
+    AnchorSideRight.Side = asrBottom
+    Left = 62
+    Height = 37
+    Top = 86
+    Width = 443
     Anchors = [akLeft, akRight]
-    BorderSpacing.Left = 5
-    OnClick = NameEditClick
+    BorderSpacing.Right = 4
     ParentShowHint = False
     TabOrder = 2
   end
   object Label4: TLabel
     AnchorSideLeft.Control = Owner
-    AnchorSideBottom.Control = PathEdit
+    AnchorSideTop.Control = PathEdit
+    AnchorSideTop.Side = asrCenter
     AnchorSideBottom.Side = asrBottom
-    Left = 5
+    Left = 4
     Height = 17
-    Top = 20
-    Width = 59
-    Anchors = [akLeft, akBottom]
-    BorderSpacing.Left = 5
-    Caption = 'Directory:'
+    Top = 18
+    Width = 54
+    BorderSpacing.Left = 4
+    Caption = 'Directory'
     Font.Style = [fsUnderline]
     ParentColor = False
     ParentFont = False
-  end
-  object PathEdit: TEdit
-    AnchorSideLeft.Control = Label4
-    AnchorSideLeft.Side = asrBottom
-    AnchorSideRight.Control = SelPathBtn
-    Left = 69
-    Height = 29
-    Hint = 'Path to save *.url files'
-    Top = 8
-    Width = 388
-    Anchors = [akTop, akLeft, akRight]
-    BorderSpacing.Left = 5
-    ParentShowHint = False
-    ReadOnly = True
-    ShowHint = True
-    TabOrder = 0
   end
   object SelPathBtn: TSpeedButton
     AnchorSideTop.Control = PathEdit
@@ -140,12 +110,12 @@ object MainForm: TMainForm
     AnchorSideRight.Side = asrBottom
     AnchorSideBottom.Control = PathEdit
     AnchorSideBottom.Side = asrBottom
-    Left = 457
-    Height = 29
+    Left = 472
+    Height = 37
     Top = 8
-    Width = 23
+    Width = 33
     Anchors = [akTop, akRight, akBottom]
-    BorderSpacing.Right = 5
+    BorderSpacing.Right = 4
     Caption = '...'
     OnClick = SelPathBtnClick
   end
@@ -154,12 +124,12 @@ object MainForm: TMainForm
     AnchorSideRight.Control = CreateBtn
     AnchorSideBottom.Control = CreateBtn
     AnchorSideBottom.Side = asrBottom
-    Left = 305
-    Height = 32
-    Top = 134
+    Left = 330
+    Height = 40
+    Top = 130
     Width = 40
     Anchors = [akTop, akRight, akBottom]
-    BorderSpacing.Right = 3
+    BorderSpacing.Right = 2
     Glyph.Data = {
       36040000424D3604000000000000360000002800000010000000100000000100
       2000000000000004000064000000640000000000000000000000FFFFFF00FFFF
@@ -199,20 +169,44 @@ object MainForm: TMainForm
     OnClick = SelectBtnClick
     TabOrder = 3
   end
+  object PathEdit: TEdit
+    AnchorSideLeft.Control = Label4
+    AnchorSideLeft.Side = asrBottom
+    AnchorSideRight.Control = SelPathBtn
+    Left = 62
+    Height = 37
+    Top = 8
+    Width = 410
+    Anchors = [akTop, akLeft, akRight]
+    BorderSpacing.Left = 4
+    TabOrder = 0
+  end
+  object URLEdit: TEdit
+    AnchorSideLeft.Control = PathEdit
+    AnchorSideRight.Control = Owner
+    AnchorSideRight.Side = asrBottom
+    Left = 62
+    Height = 37
+    Top = 47
+    Width = 443
+    Anchors = [akLeft, akRight]
+    BorderSpacing.Right = 4
+    TabOrder = 1
+  end
   object XMLPropStorage1: TXMLPropStorage
     StoredValues = <>
-    left = 304
-    top = 64
+    Left = 288
+    Top = 16
   end
   object Timer1: TTimer
     Enabled = False
     OnTimer = Timer1Timer
-    left = 216
-    top = 64
+    Left = 208
+    Top = 16
   end
   object SelectDirectoryDialog1: TSelectDirectoryDialog
-    left = 112
-    top = 64
+    Left = 104
+    Top = 16
   end
   object PopupNotifier1: TPopupNotifier
     Color = clInfoBk
@@ -283,9 +277,10 @@ object MainForm: TMainForm
     }
     Text = 'Text'
     Title = 'Caption'
+    TitleFont.Style = [fsBold]
     Visible = False
     OnClose = PopupNotifier1Close
-    left = 416
-    top = 64
+    Left = 384
+    Top = 16
   end
 end

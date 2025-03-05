@@ -1,0 +1,57 @@
+msgid ""
+msgstr "Content-Type: text/plain; charset=UTF-8"
+
+#: tmainform.caption
+msgid "MainForm"
+msgstr ""
+
+#: tmainform.createbtn.caption
+msgid "Create ShortCut"
+msgstr ""
+
+#: tmainform.label1.caption
+msgid ""
+"License: GPLv3\n"
+"Author: alex_q_2000 (C) 2020"
+msgstr ""
+
+#: tmainform.label2.caption
+msgid "URL"
+msgstr ""
+
+#: tmainform.label3.caption
+msgid "Name"
+msgstr ""
+
+#: tmainform.label4.caption
+msgid "Directory"
+msgstr ""
+
+#: tmainform.selpathbtn.caption
+msgid "..."
+msgstr ""
+
+#: tselecticonsform.caption
+msgid "Select Icon"
+msgstr ""
+
+#: unit1.sfileexists
+msgid "The file already exists! Overwrite it?"
+msgstr ""
+
+#: unit1.smate_cmenu
+msgid "Create Internet ShortCut"
+msgstr ""
+
+#: unit1.snameinput
+msgid "Name: Yandex search engine"
+msgstr ""
+
+#: unit1.spermissiondenied
+msgid "Access error! Change the target directory!"
+msgstr ""
+
+#: unit1.stitle
+msgid "Design example..."
+msgstr ""
+
