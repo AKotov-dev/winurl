@@ -21,16 +21,12 @@ msgid "Create ShortCut"
 msgstr "Создать ярлык"
 
 #: tmainform.label1.caption
-#, fuzzy
-#| msgid ""
-#| "License: GPLv3\n"
-#| "Author: alex_q_2000 (C) 2020"
 msgid ""
 "License: GPLv3\n"
 "Author: alex_q_2000 (C) 2025"
 msgstr ""
 "Лицензия: GPLv3\n"
-"Автор: alex_q_2000 (C) 2020"
+"Автор: alex_q_2000 (C) 2025"
 
 #: tmainform.label2.caption
 msgid "URL"
@@ -71,4 +67,3 @@ msgstr "Ошибка доступа! Измените директорию це�
 #: unit1.stitle
 msgid "Design example..."
 msgstr "Пример оформления..."
-
