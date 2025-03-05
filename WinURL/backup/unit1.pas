@@ -156,6 +156,7 @@ end;
 
 procedure TMainForm.FormShow(Sender: TObject);
 begin
+  //Plasma HiDPI
   XMLPropStorage1.Restore;
 
   MainForm.Caption := Application.Title;

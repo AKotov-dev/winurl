@@ -8,7 +8,6 @@ uses
   Classes, SysUtils, FileUtil, Forms, Controls, Graphics, Dialogs, ExtCtrls,
   Buttons, XMLPropStorage, StdCtrls, LCLTranslator, DefaultTranslator,
   LCLType, PopupNotifier, Process;
-  //Types
 
 type
 

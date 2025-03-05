@@ -39,8 +39,7 @@ begin
   if ParamCount <> 0 then
     OpenURLFromFile;
 
-  Application.Scaled := True;
-  Application.Title := 'WinURL v1.4';
+  Application.Title:='WinURL v1.4';
   RequireDerivedFormResource := True;
   Application.Initialize;
   Application.CreateForm(TMainForm, MainForm);
