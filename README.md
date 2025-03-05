@@ -13,5 +13,3 @@ The icon theme `adwaita-icon-theme-3.38.0` has a critical bug that the developer
 https://gitlab.gnome.org/GNOME/adwaita-icon-theme/-/issues/108
 
 For `WinURL` to work correctly, you need to install the `adwaita-mime-patch-1-0.mrx8.noarch.rpm` from the `adwaita-mime-patch` folder.
-
-Made and tested in Mageia Linux-7/8.
