@@ -54,7 +54,7 @@ object MainForm: TMainForm
     Width = 165
     Anchors = [akLeft, akBottom]
     BorderSpacing.Left = 5
-    Caption = 'License: GPLv3'#10'Author: alex_q_2000 (C) 2020'
+    Caption = 'License: GPLv3'#10'Author: alex_q_2000 (C) 2025'
     Font.Color = clGray
     Font.Height = -11
     Font.Name = 'Sans'

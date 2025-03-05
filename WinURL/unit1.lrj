@@ -2,7 +2,7 @@
 {"hash":134403005,"name":"tmainform.caption","sourcebytes":[77,97,105,110,70,111,114,109],"value":"MainForm"},
 {"hash":115586516,"name":"tmainform.createbtn.caption","sourcebytes":[67,114,101,97,116,101,32,83,104,111,114,116,67,117,116],"value":"Create ShortCut"},
 {"hash":23148,"name":"tmainform.label2.caption","sourcebytes":[85,82,76],"value":"URL"},
-{"hash":204234368,"name":"tmainform.label1.caption","sourcebytes":[76,105,99,101,110,115,101,58,32,71,80,76,118,51,10,65,117,116,104,111,114,58,32,97,108,101,120,95,113,95,50,48,48,48,32,40,67,41,32,50,48,50,48],"value":"License: GPLv3\nAuthor: alex_q_2000 (C) 2020"},
+{"hash":204234373,"name":"tmainform.label1.caption","sourcebytes":[76,105,99,101,110,115,101,58,32,71,80,76,118,51,10,65,117,116,104,111,114,58,32,97,108,101,120,95,113,95,50,48,48,48,32,40,67,41,32,50,48,50,53],"value":"License: GPLv3\nAuthor: alex_q_2000 (C) 2025"},
 {"hash":346165,"name":"tmainform.label3.caption","sourcebytes":[78,97,109,101],"value":"Name"},
 {"hash":146472345,"name":"tmainform.label4.caption","sourcebytes":[68,105,114,101,99,116,111,114,121],"value":"Directory"},
 {"hash":12558,"name":"tmainform.selpathbtn.caption","sourcebytes":[46,46,46],"value":"..."}
