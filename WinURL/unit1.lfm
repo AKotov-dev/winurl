@@ -11,6 +11,7 @@ object MainForm: TMainForm
   LCLVersion = '4.4.0.0'
   OnClose = FormClose
   OnCreate = FormCreate
+  OnKeyUp = FormKeyUp
   OnShow = FormShow
   object CreateBtn: TBitBtn
     AnchorSideRight.Control = Owner
