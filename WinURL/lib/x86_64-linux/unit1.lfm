@@ -2,11 +2,11 @@ object MainForm: TMainForm
   Left = 314
   Height = 189
   Top = 128
-  Width = 606
+  Width = 569
   ActiveControl = URLEdit
   Caption = 'MainForm'
   ClientHeight = 189
-  ClientWidth = 606
+  ClientWidth = 569
   KeyPreview = True
   LCLVersion = '4.4.0.0'
   OnClose = FormClose
@@ -16,7 +16,7 @@ object MainForm: TMainForm
   object CreateBtn: TBitBtn
     AnchorSideRight.Control = Owner
     AnchorSideRight.Side = asrBottom
-    Left = 456
+    Left = 419
     Height = 40
     Top = 140
     Width = 145
@@ -81,7 +81,7 @@ object MainForm: TMainForm
     Left = 63
     Height = 37
     Top = 98
-    Width = 538
+    Width = 501
     Anchors = [akLeft, akRight]
     BorderSpacing.Right = 5
     ParentShowHint = False
@@ -108,7 +108,7 @@ object MainForm: TMainForm
     AnchorSideRight.Side = asrBottom
     AnchorSideBottom.Control = PathEdit
     AnchorSideBottom.Side = asrBottom
-    Left = 568
+    Left = 531
     Height = 37
     Top = 8
     Width = 33
@@ -124,7 +124,7 @@ object MainForm: TMainForm
     Left = 63
     Height = 37
     Top = 8
-    Width = 505
+    Width = 468
     Anchors = [akTop, akLeft, akRight]
     BorderSpacing.Left = 4
     TabOrder = 2
@@ -136,7 +136,7 @@ object MainForm: TMainForm
     Left = 63
     Height = 37
     Top = 53
-    Width = 538
+    Width = 501
     Anchors = [akLeft, akRight]
     BorderSpacing.Right = 5
     TabOrder = 3
