@@ -10,7 +10,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<12 || n%100>14) ? 1 : 2);\n"
-"X-Generator: Poedit 3.5\n"
+"X-Generator: Poedit 3.8\n"
 
 #: tmainform.caption
 msgid "MainForm"
@@ -23,10 +23,10 @@ msgstr "Создать ярлык"
 #: tmainform.label1.caption
 msgid ""
 "License: GPLv3\n"
-"Author: alex_q_2000 (C) 2025"
+"Author: alex_q_2000 (C) 2026"
 msgstr ""
 "Лицензия: GPLv3\n"
-"Автор: alex_q_2000 (C) 2025"
+"Автор: alex_q_2000 (C) 2026"
 
 #: tmainform.label2.caption
 msgid "URL"
@@ -43,10 +43,6 @@ msgstr "Каталог"
 #: tmainform.selpathbtn.caption
 msgid "..."
 msgstr ""
-
-#: tselecticonsform.caption
-msgid "Select Icon"
-msgstr "Выбор иконки"
 
 #: unit1.sfileexists
 msgid "The file already exists! Overwrite it?"

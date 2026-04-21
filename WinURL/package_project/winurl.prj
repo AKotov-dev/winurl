@@ -2,13 +2,13 @@
 name=winurl
 
 [VERSION]
-version=1.4
+version=1.5
 
 [RELEASE]
-release=0.mrx9
+release=0.mrx10
 
 [GROUP]
-group=Applications/File
+group=Accessibility
 
 [DESCRIPTION]
 0=WinURL associates the launch of *.url files (application/x-mswinurl) via a shortcut script
@@ -20,7 +20,7 @@ group=Applications/File
 maintainer=Alex Kotov
 
 [VENDOR]
-vendor=alex_q_2000 (C) 2025
+vendor=alex_q_2000 (C) 2026
 
 [SUMMARY]
 summary=WinURL create and open Internet ShortCuts (*.url)
@@ -29,7 +29,7 @@ summary=WinURL create and open Internet ShortCuts (*.url)
 urlcopy=https://github.com/AKotov-dev/winurl
 
 [LICENSE]
-license=GPLv3+
+license=GPLv3
 
 [DEPS]
 deps=xdg-utils hicolor-icon-theme
@@ -44,33 +44,26 @@ noarch=0
 deb=0
 
 [FILES]
-0=/usr/share/WinURL/
+0=/usr/share/icons/WinURL.png
 1=/usr/share/applications/WinURL.desktop
 2=/usr/share/nemo/actions/winurl.nemo_action
 3=/usr/share/file-manager/actions/winurl.desktop
-4=/usr/share/doc/winurl/
-5=/usr/share/icons/WinURL.png
-6=/usr/share/icons/hicolor/32x32/mimetypes/application-x-mswinurl.png
-7=/usr/share/icons/hicolor/48x48/mimetypes/application-x-mswinurl.png
-8=/usr/share/icons/hicolor/64x64/mimetypes/application-x-mswinurl.png
-9=/usr/share/icons/hicolor/72x72/mimetypes/application-x-mswinurl.png
-10=/usr/share/icons/hicolor/96x96/mimetypes/application-x-mswinurl.png
-11=/usr/share/icons/hicolor/128x128/mimetypes/application-x-mswinurl.png
-12=/usr/share/icons/hicolor/256x256/mimetypes/application-x-mswinurl.png
+4=/usr/share/WinURL/
+5=/usr/share/doc/winurl/
 
 [AFTERINSTALL]
 0=#Launcher with *.desktop associate (install)
 1=xdg-mime default WinURL.desktop application/x-mswinurl
 2=#Icons and cache update (install)
-3=xdg-icon-resource forceupdate; gtk-update-icon-cache -q -f /usr/share/icons/hicolor;
-4=update-desktop-database -q /usr/share/applications;
+3=#xdg-icon-resource forceupdate; gtk-update-icon-cache -q -f /usr/share/icons/hicolor;
+4=#update-desktop-database -q /usr/share/applications;
 
 [AFTERREMOVE]
 0=#Launcher without *.desktop associate (remove)
 1=xdg-mime default WinURL.desktop application/x-mswinurl;
 2=#Icons and cache update (remove)
-3=xdg-icon-resource forceupdate; gtk-update-icon-cache -q -f /usr/share/icons/hicolor;
-4=update-desktop-database -q /usr/share/applications;
+3=#xdg-icon-resource forceupdate; gtk-update-icon-cache -q -f /usr/share/icons/hicolor;
+4=#update-desktop-database -q /usr/share/applications;
 
 [URL32]
 url32=https://github.com/AKotov-dev/winurl
@@ -79,56 +72,61 @@ url32=https://github.com/AKotov-dev/winurl
 programname=WinURL
 
 [DEVTOOL]
-devtool=Lazarus + BASH
+devtool=Lazarus
 
 [TOOLVERSION]
-toolversion=3.8
+toolversion=4.4
 
 [INFO]
 0=The program associates *.url files (application/x-mswinurl) with the default browser.
 1=
-2=v1.4
-3=+ Recompiling to Lazarus-3.8
-4=+ Improved label name detox filter
-5=
-6=Справочная информация (rus):
-7=---
-8=Пакет: xdg-utils
-9=
-10=update-desktop-database -q /usr/share/applications; update-mime-database /usr/share/mime; gtk-update-icon-cache -q -f /usr/share/icons/hicolor; xdg-icon-resource forceupdate
-11=
-12=http://tierpod.blogspot.com/2013/06/ubuntu-mimetype.html - ИНСТРУКЦИЯ
-13=
-14=Ярлык находится в стандартной /usr/share/applications
-15=---
-16=xdg-mime default launch-url.desktop application/x-mswinurl
-17=xdg-mime query filetype ./1.url
+2=v1.5
+3=+ Recompiled with Lazarus 4.4
+4=+ Migrated to shared-mime-info 2.4
+5=+ application-x-mswinurl icons are now provided only via system icon themes
+6=
+7=v1.4
+8=+ Recompiling to Lazarus-3.8
+9=+ Improved label name detox filter
+10=
+11=Справочная информация (rus):
+12=---
+13=Пакет: xdg-utils
+14=
+15=update-desktop-database -q /usr/share/applications; update-mime-database /usr/share/mime; gtk-update-icon-cache -q -f /usr/share/icons/hicolor; xdg-icon-resource forceupdate
+16=
+17=http://tierpod.blogspot.com/2013/06/ubuntu-mimetype.html - ИНСТРУКЦИЯ
 18=
-19=Запросы
+19=Ярлык находится в стандартной /usr/share/applications
 20=---
-21=xdg-mime query filetype <filename> позволяет узнать mime-тип файла.
-22=
-23=xdg-mime query default <mime-type> – узнать приложение по умолчанию для открытия данного mime-типа.
-24=Установка умолчаний
-25=
-26=xdg-mime default <desktop-file-name> <mime-type>... позволяет установить приложение <desktop-file-name> по умолчанию для открытия одного или нескольких mime-типов. <desktop-file-name> – это название desktop-файла, который будет использован (без пути, с расширением)
+21=xdg-mime default launch-url.desktop application/x-mswinurl
+22=xdg-mime query filetype ./1.url
+23=
+24=Запросы
+25=---
+26=xdg-mime query filetype <filename> позволяет узнать mime-тип файла.
 27=
-28=Например:
-29=---
-30=xdg-mime default okular.desktop image/jpeg image/png
-31=
-32=xdg-mime query default application/x-mswinurl
-33=
-34=Регистрация иконки из текущего каталога:
-35=---
-36=xdg-icon-resource install --size 64 shinythings-myfoobar.png
-37=xdg-icon-resource install --context mimetypes --size 48 иконка.png x-application-mswinurl
-38=xdg-icon-resource install --context mimetypes --size 48 LaunchURL3.png x-application-mswinurl; xdg-icon-resource forceupdate
-39=
-40=---------------
-41=xdg-icon-resource install --context mimetypes --size 48 application-x-mswinurl.png x-application-mswinurl
-42=xdg-icon-resource uninstall --context mimetypes --size 48 application-x-mswinurl.png x-application-mswinurl
-43=---обновление!!!
-44=xdg-icon-resource forceupdate; gtk-update-icon-cache -q -f /usr/share/icons/hicolor;
-45=---
-46=Если иконки *.url не возвращаются в дефолт после удаления пакета, удалите локальный каталог ~/.local/share/icons, если в нём присутствуют файлы application-x-mswinurl.png (см. в субкаталогах)
+28=xdg-mime query default <mime-type> – узнать приложение по умолчанию для открытия данного mime-типа.
+29=Установка умолчаний
+30=
+31=xdg-mime default <desktop-file-name> <mime-type>... позволяет установить приложение <desktop-file-name> по умолчанию для открытия одного или нескольких mime-типов. <desktop-file-name> – это название desktop-файла, который будет использован (без пути, с расширением)
+32=
+33=Например:
+34=---
+35=xdg-mime default okular.desktop image/jpeg image/png
+36=
+37=xdg-mime query default application/x-mswinurl
+38=
+39=Регистрация иконки из текущего каталога:
+40=---
+41=xdg-icon-resource install --size 64 shinythings-myfoobar.png
+42=xdg-icon-resource install --context mimetypes --size 48 иконка.png x-application-mswinurl
+43=xdg-icon-resource install --context mimetypes --size 48 LaunchURL3.png x-application-mswinurl; xdg-icon-resource forceupdate
+44=
+45=---------------
+46=xdg-icon-resource install --context mimetypes --size 48 application-x-mswinurl.png x-application-mswinurl
+47=xdg-icon-resource uninstall --context mimetypes --size 48 application-x-mswinurl.png x-application-mswinurl
+48=---обновление!!!
+49=xdg-icon-resource forceupdate; gtk-update-icon-cache -q -f /usr/share/icons/hicolor;
+50=---
+51=Если иконки *.url не возвращаются в дефолт после удаления пакета, удалите локальный каталог ~/.local/share/icons, если в нём присутствуют файлы application-x-mswinurl.png (см. в субкаталогах)

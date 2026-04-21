@@ -6,18 +6,17 @@ interface
 
 uses
   Classes, SysUtils, FileUtil, Forms, Controls, Graphics, Dialogs, ExtCtrls,
-  Buttons, XMLPropStorage, StdCtrls, LCLTranslator, DefaultTranslator,
-  LCLType, PopupNotifier, Process;
+  Buttons, StdCtrls, DefaultTranslator, LCLType, PopupNotifier, Process, IniFiles;
 
 type
 
   { TMainForm }
 
   TMainForm = class(TForm)
+    Image1: TImage;
     URLEdit: TEdit;
     PathEdit: TEdit;
     PopupNotifier1: TPopupNotifier;
-    SelectBtn: TBitBtn;
     CreateBtn: TBitBtn;
     Label4: TLabel;
     NameEdit: TEdit;
@@ -27,9 +26,8 @@ type
     Label2: TLabel;
     Label3: TLabel;
     Timer1: TTimer;
-    XMLPropStorage1: TXMLPropStorage;
+    procedure FormClose(Sender: TObject; var CloseAction: TCloseAction);
     procedure PopupNotifier1Close(Sender: TObject; var CloseAction: TCloseAction);
-    procedure SelectBtnClick(Sender: TObject);
     procedure CreateBtnClick(Sender: TObject);
     procedure SelPathBtnClick(Sender: TObject);
     procedure URLEditClick(Sender: TObject);
@@ -39,6 +37,8 @@ type
     procedure DetoxName; //Валидация/правка имени ярлыка *.url
     procedure Timer1Timer(Sender: TObject);
     procedure MateCMenuCreate;
+    procedure SaveSettings;
+    procedure LoadSettings;
 
   private
 
@@ -56,15 +56,52 @@ resourcestring
 var
   MainForm: TMainForm;
   a: integer; //Timer counter
+  CONF: string; //Файл конфигурации
 
 implementation
 
-uses select_icons_unit;
+{$R *.lfm}
 
-  {$R *.lfm}
+{ TMainForm }
 
-  { TMainForm }
 
+//Сохранение настроек формы
+procedure TMainForm.SaveSettings;
+var
+  Ini: TIniFile;
+begin
+  Ini := TIniFile.Create(CONF);
+  try
+    Ini.WriteInteger('MainForm', 'Top', MainForm.Top);
+    Ini.WriteInteger('MainForm', 'Left', MainForm.Left);
+    Ini.WriteInteger('MainForm', 'Width', MainForm.Width);
+    Ini.WriteInteger('MainForm', 'Height', MainForm.Height);
+    Ini.WriteString('PathEdit', 'Text', PathEdit.Text);
+    //   Ini.WriteString('SelectDirectoryDialog1', 'FileName', '');
+  finally
+    Ini.Free;
+  end;
+end;
+
+//Загрузка настроек формы
+procedure TMainForm.LoadSettings;
+var
+  Ini: TIniFile;
+begin
+  if not FileExists(CONF) then Exit;
+  Ini := TIniFile.Create(CONF);
+  try
+    MainForm.Top := Ini.ReadInteger('MainForm', 'Top', MainForm.Top);
+    MainForm.Left := Ini.ReadInteger('MainForm', 'Left', MainForm.Left);
+    MainForm.Width := Ini.ReadInteger('MainForm', 'Width', MainForm.Width);
+    MainForm.Height := Ini.ReadInteger('MainForm', 'Height', MainForm.Height);
+    PathEdit.Text := Ini.ReadString('PathEdit', 'Text', '');
+    //   SelectDirectoryDialog1.FileName :=
+    //     Ini.ReadString('SelectDirectoryDialog1', 'FileName', '');
+  finally
+    Ini.Free;
+  end;
+end;
 
 //Создаём опцию "Создать интернет-ярлык" в контекстном меню MATE (ПКМ)
 procedure TMainForm.MateCMenuCreate;
@@ -132,18 +169,32 @@ begin
 end;
 
 procedure TMainForm.FormCreate(Sender: TObject);
+var
+  bmp: TBitmap;
 begin
-  //Создаём рабочую директорию, если нет
-  if not DirectoryExists(GetEnvironmentVariable('HOME') + '/.WinURL') then
-    MkDir(GetEnvironmentVariable('HOME') + '/.WinURL');
+  // Создаем всю цепочку папок, если их нет
+  if not DirectoryExists(GetUserDir + '.config') then
+    MkDir(GetUserDir + '.config');
 
-  //Конфиг
-  XMLPropStorage1.FileName := GetEnvironmentVariable('HOME') +
-    '/.WinURL/settings.xml';
+  // Указываем файл
+  CONF := GetUserDir + '.config/WinURL.xml';
+
+  Sleep(50);
+
+  //  LoadSettings;
+
+  // Устраняем баг иконки приложения
+  bmp := TBitmap.Create;
+  try
+    bmp.PixelFormat := pf32bit;
+    bmp.Assign(Image1.Picture.Graphic);
+    Application.Icon.Assign(bmp);
+  finally
+    bmp.Free;
+  end;
 
   //Проверяем наличие скрипта CMenu WinURL для MATE (имя из переведённого ресурса)
-  if not FileExists(GetEnvironmentVariable('HOME') + '/.config/caja/scripts/' +
-    SMATE_CMenu) then
+  if not FileExists(GetUserDir + '.config/caja/scripts/' + SMATE_CMenu) then
     MateCMenuCreate;
 end;
 
@@ -155,26 +206,25 @@ end;
 
 procedure TMainForm.FormShow(Sender: TObject);
 begin
-  //Plasma HiDPI
-  XMLPropStorage1.Restore;
+  //Plasma HiDPI (Читаем настройки)
+  MainForm.LoadSettings;
 
   MainForm.Caption := Application.Title;
 
   SelPathBtn.Width := PathEdit.Height;
-  SelectBtn.Width := CreateBtn.Height;
 
   //Первый запуск... Ищем Рабочий стол...
   if Trim(PathEdit.Text) = '' then
-    if DirectoryExists(GetEnvironmentVariable('HOME') + '/Desktop') then
-      SelectDirectoryDialog1.FileName := GetEnvironmentVariable('HOME') + '/Desktop'
+    if DirectoryExists(GetUserDir + 'Desktop') then
+      PathEdit.Text := GetUserDir + 'Desktop'
     else
-    if DirectoryExists(GetEnvironmentVariable('HOME') + '/Рабочий стол') then
-      SelectDirectoryDialog1.FileName :=
-        GetEnvironmentVariable('HOME') + '/Рабочий стол'
+    if DirectoryExists(GetUserDir + 'Рабочий стол') then
+      PathEdit.Text :=
+        GetUserDir + 'Рабочий стол'
     else
-      SelectDirectoryDialog1.FileName := GetEnvironmentVariable('HOME');
+      PathEdit.Text := GetEnvironmentVariable('HOME');
 
-  PathEdit.Text := SelectDirectoryDialog1.FileName;
+  SelectDirectoryDialog1.InitialDir := PathEdit.Text;
 end;
 
 procedure TMainForm.CreateBtnClick(Sender: TObject);
@@ -207,6 +257,7 @@ begin
 
       S.SaveToFile(PathEdit.Text + '/' + NameEdit.Text + '.url');
       S.Free;
+      Close;
     except  //finally закрывает приложение
       MessageDlg(SPermissionDenied, mtError, [mbOK], 0);
       S.Free;
@@ -220,20 +271,14 @@ begin
   end;
 end;
 
-procedure TMainForm.SelectBtnClick(Sender: TObject);
-begin
-  if SelectIconsForm = nil then
-    SelectIconsForm := TSelectIconsForm.Create(Application);
-
-  SelectIconsForm.Left := MainForm.Left;
-  SelectIconsForm.Top := MainForm.Top;
-
-  SelectIconsForm.Show;
-end;
-
 procedure TMainForm.PopupNotifier1Close(Sender: TObject; var CloseAction: TCloseAction);
 begin
   Timer1.Enabled := False;
+end;
+
+procedure TMainForm.FormClose(Sender: TObject; var CloseAction: TCloseAction);
+begin
+  MainForm.SaveSettings;
 end;
 
 procedure TMainForm.SelPathBtnClick(Sender: TObject);
